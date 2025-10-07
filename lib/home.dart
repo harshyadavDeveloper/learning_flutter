@@ -11,34 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Map<String, dynamic>> users = [
-    {
-      "id": 1,
-      "name": "Alice Johnson",
-      "avatar": "https://i.pravatar.cc/150?img=1",
-    },
-    {
-      "id": 2,
-      "name": "Bob Smith",
-      "avatar": "https://i.pravatar.cc/150?img=2",
-    },
-    {
-      "id": 3,
-      "name": "Charlie Brown",
-      "avatar": "https://i.pravatar.cc/150?img=3",
-    },
-    {
-      "id": 4,
-      "name": "Diana Prince",
-      "avatar": "https://i.pravatar.cc/150?img=4",
-    },
-    {
-      "id": 5,
-      "name": "Ethan Hunt",
-      "avatar": "https://i.pravatar.cc/150?img=5",
-    },
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -79,9 +51,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => UserDetails(
-                                user: user
-                              )));
+                          builder: (context) => UserDetails(user: user)));
                 },
                 leading: CircleAvatar(
                   backgroundImage: NetworkImage(user.avatar!),

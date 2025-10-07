@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ListController()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           textTheme: const TextTheme(

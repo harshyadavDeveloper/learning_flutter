@@ -14,6 +14,8 @@ class UserDetails extends StatelessWidget {
       // ADDED: AppBar with back button (automatic)
       appBar: AppBar(
         title: const Text("User Details"),
+        backgroundColor: Colors.redAccent,
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
