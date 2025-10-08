@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider_app/user_model.dart';
-import 'package:http/http.dart' as http;
 
 class ListController extends ChangeNotifier {
   final String baseUrl =
@@ -24,20 +21,21 @@ class ListController extends ChangeNotifier {
       notifyListeners();
 
       final response = await _dio.get(baseUrl);
-      //  final response = await http.get(Uri.parse(fullUrl));
+
       if (response.statusCode == 200) {
         print("get user response ${response.data}");
 
-        List<dynamic> jsonData = json.decode(response.data);
+        // response.data is already a List<dynamic>
+        List<dynamic> jsonData = response.data;
 
         _userList = jsonData.map((user) => UserModel.fromJson(user)).toList();
 
-        print("total user are ${_userList.length}");
+        print("total users are ${_userList.length}");
       } else {
-        // print("error fetching users ${response.body} ${response.statusCode}");
+        print("Error fetching users: ${response.statusCode}");
       }
     } catch (e, s) {
-      print("error fethcing data from api, Error: $e, Stacktree: $s");
+      print("Error fetching data from API: $e\nStacktrace: $s");
     } finally {
       _isLoading = false;
       notifyListeners();

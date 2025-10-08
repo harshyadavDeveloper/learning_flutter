@@ -47,11 +47,11 @@ class _HomePageState extends State<HomePage> {
               ),
               child: ListTile(
                 onTap: () {
-                  // print("User ID: ${user["id"]}");
+                  print("User ID: ${user.id}");
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => UserDetails(user: user)));
+                          builder: (context) => UserDetails(userId: user.id!)));
                 },
                 leading: CircleAvatar(
                   backgroundImage: NetworkImage(user.avatar!),
