@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_app/add_user.dart';
 import 'package:provider_app/list_controller.dart';
 import 'package:provider_app/user_details.dart';
 
@@ -30,10 +31,17 @@ class _HomePageState extends State<HomePage> {
       builder: (context, controller, child) => Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.yellow,
-          title: const Text(
-            "Home Page",
-          ),
+          title: const Text("Home Page"),
           centerTitle: true,
+          leading: IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AddUserPage()),
+              );
+            },
+          ),
         ),
         body: ListView.builder(
           itemCount: controller.userList.length,
