@@ -16,6 +16,30 @@ class _AddUserPageState extends State<AddUserPage> {
   final _addressController = TextEditingController();
   final _avatarController = TextEditingController();
 
+  final List<Map<String, String>> roles = [
+    {"id": "1", "name": "Admin"},
+    {"id": "2", "name": "Manager"},
+    {"id": "3", "name": "User"},
+    {"id": "4", "name": "Customer"},
+  ];
+
+  final List<Map<String, String>> countries = [
+    {"id": "1", "name": "India"},
+    {"id": "2", "name": "USA"},
+    {"id": "3", "name": "China"},
+    {"id": "4", "name": "Japan"},
+  ];
+
+  final List<Map<String, dynamic>> departments = [
+    {"id": "101", "name": "HR"},
+    {"id": "201", "name": "Engineering"},
+    {"id": "302", "name": "Testing"},
+    {"id": "405", "name": "Sales"},
+  ];
+  dynamic? selectedCountry;
+  dynamic? selectedRole;
+  dynamic? selectedDepartment;
+
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<ListController>(context, listen: false);
@@ -30,6 +54,31 @@ class _AddUserPageState extends State<AddUserPage> {
             key: _formKey,
             child: Column(
               children: [
+                // ==================== Country Dropdown ====================
+                const Text("Select Country",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    )),
+
+                DropdownButtonFormField(
+                    initialValue: selectedCountry,
+                    hint: const Text("Select a Country"),
+                    items: countries.map((country) {
+                      return DropdownMenuItem(
+                        value: country['id'],
+                        child: Text(country['name']!),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        selectedCountry = value;
+                      });
+                      final country =
+                          countries.firstWhere((e) => e['id'] == value);
+                      print("Selected country name: ${country['name']}");
+                      print("Selected country id: ${country['id']}");
+                    }),
                 TextFormField(
                   controller: _nameController,
                   decoration: const InputDecoration(labelText: "Name"),
