@@ -36,9 +36,9 @@ class _AddUserPageState extends State<AddUserPage> {
     {"id": "302", "name": "Testing"},
     {"id": "405", "name": "Sales"},
   ];
-  dynamic? selectedCountry;
-  dynamic? selectedRole;
-  dynamic? selectedDepartment;
+  dynamic selectedCountry;
+  dynamic selectedRole;
+  dynamic selectedDepartment;
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +79,7 @@ class _AddUserPageState extends State<AddUserPage> {
                       print("Selected country name: ${country['name']}");
                       print("Selected country id: ${country['id']}");
                     }),
+
                 TextFormField(
                   controller: _nameController,
                   decoration: const InputDecoration(labelText: "Name"),
