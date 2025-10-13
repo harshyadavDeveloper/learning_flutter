@@ -39,6 +39,7 @@ class _AddUserPageState extends State<AddUserPage> {
   dynamic selectedCountry;
   dynamic selectedRole;
   dynamic selectedDepartment;
+  String? selectedUserId;
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +80,23 @@ class _AddUserPageState extends State<AddUserPage> {
                       print("Selected country name: ${country['name']}");
                       print("Selected country id: ${country['id']}");
                     }),
+
+                // ["harsh:231", "john:421", "doe:5342"]
+
+                DropdownButtonFormField<String>(
+                  initialValue: selectedUserId,
+                  hint: const Text("Select a User ID"),
+                  items: controller.userList.map((user) {
+                    return DropdownMenuItem(
+                        value: user.id, child: Text(user.name ?? "No name"));
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedUserId = value;
+                    });
+                    print("selected user id: $value");
+                  },
+                ),
 
                 TextFormField(
                   controller: _nameController,

@@ -97,4 +97,21 @@ class ListController extends ChangeNotifier {
       print("Error deleting user: $e, Stacktrace: $s");
     }
   }
+
+  // Future<List<UserModel>> getDropDownusers() async{
+  //   List<UserModel> users = [];
+  //   try{
+  //     _isLoading = true;
+  //     _error = null;
+  //     notifyListeners();
+
+  //     final response = await _dio.get(baseUrl);
+
+  //     if(response.statusCode == 200){
+  //       print("get users dropdown data ${response.data}");
+
+  //       List<dynamic> jsonData = response.data;
+  //     }
+  //   }
+  // }
 }
