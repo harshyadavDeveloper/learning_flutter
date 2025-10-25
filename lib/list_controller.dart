@@ -71,6 +71,8 @@ class ListController extends ChangeNotifier {
   // UPDATE an existing user
   Future<void> updateUser(String id, UserModel userToUpdate) async {
     try {
+      print(
+          "username: ${userToUpdate.name}, address: ${userToUpdate.address}, avatar url: ${userToUpdate.avatar}");
       final response =
           await _dio.put("$baseUrl/$id", data: userToUpdate.toJson());
       if (response.statusCode == 200) {

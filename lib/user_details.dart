@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_app/edit_user.dart';
 import 'package:provider_app/list_controller.dart';
 import 'package:provider_app/user_model.dart';
 
@@ -77,11 +78,31 @@ class _UserDetailsState extends State<UserDetails> {
                   const SizedBox(height: 20),
 
                   // ADDED: Simple back button (optional since AppBar has one)
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context); // Go back to previous page
-                    },
-                    child: const Text("Go Back"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text("Go Back"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => EditUserPage(
+                                userId: widget.userId,
+                              ),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blueAccent),
+                        child: const Text("Edit User"),
+                      ),
+                    ],
                   ),
                 ],
               ),
