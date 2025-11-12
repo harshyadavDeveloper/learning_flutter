@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> getData() async {
     final controller = Provider.of<ListController>(context, listen: false);
     controller.getUsers();
+    print(controller);
   }
 
   @override
